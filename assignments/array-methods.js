@@ -86,7 +86,31 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// Find all runners from Mycat using .filter
+let MycatRunners = [];
+MycatRunners = runners.filter(runnerID => runnerID.company_name === "Mycat");
+console.log("Mycat runners", MycatRunners);
+
 
 // Problem 2
+//Find all edu emails
+let studentEmails = [];
+runners.forEach(function(runnerID) {
+    if (runnerID.email.includes(".edu")){
+        studentEmails.push(runnerID);
+    }
+});
+console.log("Students", studentEmails);
 
 // Problem 3
+//Find all possible relatives
+let relatedTo = [];
+runners.forEach(function(runnerID) {
+    let searchResults = runners.filter(runnerID2 => runnerID.last_name === runnerID2.last_name && runnerID.first_name !== runnerID2.first_name);
+    if (searchResults.length > 0) relatedTo.push(searchResults);
+});
+
+console.log("######################");
+console.log("######################");
+console.log("######################");
+console.log("Related", relatedTo);
